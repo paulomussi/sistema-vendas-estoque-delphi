@@ -1,0 +1,110 @@
+
+-- TABELA: CIDADES
+
+CREATE TABLE CIDADES (
+    id_cidade INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    estado CHAR(2) NOT NULL,
+    cep_inicial VARCHAR(9),
+    cep_final VARCHAR(9),
+    ativo TINYINT DEFAULT 1
+);
+
+-----------------------------------------------------------
+-- TABELA: CLIENTES
+
+CREATE TABLE CLIENTES (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(14),
+    telefone VARCHAR(20),
+    email VARCHAR(100),
+    endereco VARCHAR(150),
+    bairro VARCHAR(100),
+    complemento VARCHAR(100),
+    cep VARCHAR(9),
+    id_cidade INT,
+    ativo TINYINT DEFAULT 1,
+
+    CONSTRAINT fk_clientes_cidades
+        FOREIGN KEY (id_cidade)
+        REFERENCES CIDADES(id_cidade)
+);
+
+-----------------------------------------------------------
+-- TABELA: PRODUTOS
+
+CREATE TABLE PRODUTOS (
+    id_produto INT PRIMARY KEY AUTO_INCREMENT,
+    descricao VARCHAR(150) NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    estoque INT DEFAULT 0,
+    ativo TINYINT DEFAULT 1
+);
+
+
+-----------------------------------------------------------
+-- TABELA: VENDAS
+
+CREATE TABLE VENDAS (
+    id_venda INT PRIMARY KEY AUTO_INCREMENT,
+    data_venda DATE NOT NULL,
+    id_cliente INT,
+    total DECIMAL(10,2),
+
+    CONSTRAINT fk_vendas_clientes
+        FOREIGN KEY (id_cliente)
+        REFERENCES CLIENTES(id_cliente)
+);
+
+
+-----------------------------------------------------------
+-- TABELA: ITENS_VENDA
+
+CREATE TABLE ITENS_VENDA (
+    id_item INT PRIMARY KEY AUTO_INCREMENT,
+    id_venda INT NOT NULL,
+    id_produto INT NOT NULL,
+    quantidade INT NOT NULL,
+    valor_unitario DECIMAL(10,2) NOT NULL,
+
+    CONSTRAINT fk_itens_venda_vendas
+        FOREIGN KEY (id_venda)
+        REFERENCES VENDAS(id_venda),
+
+    CONSTRAINT fk_itens_venda_produtos
+        FOREIGN KEY (id_produto)
+        REFERENCES PRODUTOS(id_produto)
+);
+
+-----------------------------------------------------------
+-- TABELA: COMPRAS (ENTRADA DE ESTOQUE)
+
+CREATE TABLE COMPRAS (
+    id_compra INT PRIMARY KEY AUTO_INCREMENT,
+    data_compra DATE NOT NULL,
+    fornecedor VARCHAR(100),
+    total DECIMAL(10,2)
+);
+
+-----------------------------------------------------------
+-- TABELA: ITENS_COMPRA
+
+CREATE TABLE ITENS_COMPRA (
+    id_item INT PRIMARY KEY AUTO_INCREMENT,
+    id_compra INT NOT NULL,
+    id_produto INT NOT NULL,
+    quantidade INT NOT NULL,
+    valor_unitario DECIMAL(10,2) NOT NULL,
+
+    CONSTRAINT fk_itens_compra_compras
+        FOREIGN KEY (id_compra)
+        REFERENCES COMPRAS(id_compra),
+
+    CONSTRAINT fk_itens_compra_produtos
+        FOREIGN KEY (id_produto)
+        REFERENCES PRODUTOS(id_produto)
+);
+
+
+
