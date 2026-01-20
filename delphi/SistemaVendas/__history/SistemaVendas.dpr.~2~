@@ -1,0 +1,20 @@
+program SistemaVendas;
+
+uses
+  Vcl.Forms,
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uDataModule in 'uDataModule.pas' {dmConexao: TDataModule},
+  uCidades in 'uCidades.pas' {frmCidades},
+  uPai in 'uPai.pas' {Form1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TdmConexao, dmConexao);
+  Application.CreateForm(TfrmCidades, frmCidades);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.
