@@ -1,66 +1,63 @@
-object frmCidades: TfrmCidades
-  Left = 0
-  Top = 0
+inherited frmCidades: TfrmCidades
   BorderStyle = bsSingle
   Caption = 'Cadastro de Cidades'
-  ClientHeight = 443
-  ClientWidth = 567
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -12
-  Font.Name = 'Segoe UI'
-  Font.Style = []
   Position = poScreenCenter
+  StyleElements = [seFont, seClient, seBorder]
   OnShow = FormShow
   TextHeight = 15
-  object Label1: TLabel
-    Left = 48
-    Top = 214
+  object Label1: TLabel [0]
+    Left = 232
+    Top = 350
     Width = 39
     Height = 15
     Caption = 'C'#243'digo'
   end
-  object Label2: TLabel
-    Left = 208
-    Top = 214
+  object Label2: TLabel [1]
+    Left = 392
+    Top = 350
     Width = 89
     Height = 15
     Caption = 'Nome da Cidade'
   end
-  object Label3: TLabel
-    Left = 48
-    Top = 257
+  object Label3: TLabel [2]
+    Left = 232
+    Top = 393
     Width = 60
     Height = 15
     Caption = 'Estado (UF)'
   end
-  object Label4: TLabel
-    Left = 208
-    Top = 257
+  object Label4: TLabel [3]
+    Left = 392
+    Top = 393
     Width = 55
     Height = 15
     Caption = 'CEP Inicial'
   end
-  object Label5: TLabel
-    Left = 376
-    Top = 257
+  object Label5: TLabel [4]
+    Left = 560
+    Top = 393
     Width = 49
     Height = 15
     Caption = 'CEP Final'
   end
-  object Label6: TLabel
-    Left = 216
-    Top = 312
+  object Label6: TLabel [5]
+    Left = 400
+    Top = 448
     Width = 28
     Height = 15
     Caption = 'Ativo'
   end
+  inherited pnlBotoes: TPanel
+    TabOrder = 7
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 393
+    ExplicitWidth = 567
+  end
   object dbgCidades: TDBGrid
     Left = 0
     Top = 0
-    Width = 567
-    Height = 200
+    Width = 1068
+    Height = 297
     Align = alTop
     DataSource = dmConexao.dsCidades
     TabOrder = 0
@@ -103,8 +100,8 @@ object frmCidades: TfrmCidades
       end>
   end
   object DBEdit1: TDBEdit
-    Left = 128
-    Top = 211
+    Left = 312
+    Top = 347
     Width = 41
     Height = 23
     DataField = 'id_cidade'
@@ -113,8 +110,8 @@ object frmCidades: TfrmCidades
     TabOrder = 1
   end
   object DBEdit2: TDBEdit
-    Left = 311
-    Top = 211
+    Left = 495
+    Top = 347
     Width = 210
     Height = 23
     DataField = 'nome'
@@ -122,8 +119,8 @@ object frmCidades: TfrmCidades
     TabOrder = 2
   end
   object DBEdit3: TDBEdit
-    Left = 128
-    Top = 254
+    Left = 312
+    Top = 390
     Width = 41
     Height = 23
     CharCase = ecUpperCase
@@ -132,8 +129,8 @@ object frmCidades: TfrmCidades
     TabOrder = 3
   end
   object DBEdit4: TDBEdit
-    Left = 279
-    Top = 254
+    Left = 463
+    Top = 390
     Width = 81
     Height = 23
     DataField = 'cep_inicial'
@@ -141,8 +138,8 @@ object frmCidades: TfrmCidades
     TabOrder = 4
   end
   object DBEdit5: TDBEdit
-    Left = 440
-    Top = 254
+    Left = 624
+    Top = 390
     Width = 81
     Height = 23
     DataField = 'cep_final'
@@ -150,8 +147,8 @@ object frmCidades: TfrmCidades
     TabOrder = 5
   end
   object DBCheckBox1: TDBCheckBox
-    Left = 263
-    Top = 312
+    Left = 447
+    Top = 448
     Width = 97
     Height = 17
     Caption = 'DBCheckBox1'
@@ -160,13 +157,5 @@ object frmCidades: TfrmCidades
     TabOrder = 6
     ValueChecked = '1'
     ValueUnchecked = '0'
-  end
-  object DBNavigator1: TDBNavigator
-    Left = 128
-    Top = 376
-    Width = 240
-    Height = 25
-    DataSource = dmConexao.dsCidades
-    TabOrder = 7
   end
 end

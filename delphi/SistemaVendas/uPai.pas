@@ -3,28 +3,64 @@ unit uPai;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+  System.SysUtils, System.Classes, Vcl.Forms, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Controls;
 
 type
   TfrmPai = class(TForm)
     pnlBotoes: TPanel;
-    Button1: TButton;
+    btnNovo: TButton;
     btnSalvar: TButton;
-    btnCancelar: TButton;
     btnExcluir: TButton;
     btnFechar: TButton;
-  private
-    { Private declarations }
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
   public
-    { Public declarations }
+    procedure Novo; virtual;
+    procedure Salvar; virtual;
+    procedure Excluir; virtual;
   end;
-
-var
-  frmPai: TfrmPai;
 
 implementation
 
 {$R *.dfm}
 
+procedure TfrmPai.btnNovoClick(Sender: TObject);
+begin
+  Novo;
+end;
+
+procedure TfrmPai.btnSalvarClick(Sender: TObject);
+begin
+  Salvar;
+end;
+
+procedure TfrmPai.btnExcluirClick(Sender: TObject);
+begin
+  Excluir;
+end;
+
+procedure TfrmPai.btnFecharClick(Sender: TObject);
+begin
+  Close;;
+end;
+
+procedure TfrmPai.Novo;
+begin
+  // vazio de propósito
+end;
+
+procedure TfrmPai.Salvar;
+begin
+  // vazio de propósito
+end;
+
+procedure TfrmPai.Excluir;
+begin
+  // vazio de propósito
+end;
+
 end.
+

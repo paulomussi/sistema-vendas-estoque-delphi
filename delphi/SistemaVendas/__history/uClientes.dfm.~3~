@@ -1,0 +1,10 @@
+inherited frmClientes: TfrmClientes
+  BorderStyle = bsSingle
+  Caption = 'frmClientes'
+  Position = poScreenCenter
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnlBotoes: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+end

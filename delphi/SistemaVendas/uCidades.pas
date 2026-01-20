@@ -5,10 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.Grids, Vcl.DBGrids;
+  Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.Grids, Vcl.DBGrids, uPai;
 
 type
-  TfrmCidades = class(TForm)
+  TfrmCidades = class(TfrmPai)
     dbgCidades: TDBGrid;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
@@ -16,7 +16,6 @@ type
     DBEdit4: TDBEdit;
     DBEdit5: TDBEdit;
     DBCheckBox1: TDBCheckBox;
-    DBNavigator1: TDBNavigator;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -27,7 +26,9 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
+  procedure Novo; override;
+  procedure Salvar; override;
+  procedure Excluir; override;
   end;
 
 var
@@ -43,7 +44,23 @@ procedure TfrmCidades.FormShow(Sender: TObject);
 begin
   if not dmConexao.qryCidades.Active then
     dmConexao.qryCidades.Open;
+end;
 
+procedure TfrmCidades.Novo;
+begin
+  dmConexao.qryCidades.Append;
+end;
+
+procedure TfrmCidades.Salvar;
+begin
+  if dmConexao.qryCidades.State in [dsInsert, dsEdit] then
+    dmConexao.qryCidades.Post;
+end;
+
+procedure TfrmCidades.Excluir;
+begin
+  if not dmConexao.qryCidades.IsEmpty then
+    dmConexao.qryCidades.Delete;
 end;
 
 end.

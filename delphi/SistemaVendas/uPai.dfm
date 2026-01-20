@@ -2,8 +2,8 @@ object frmPai: TfrmPai
   Left = 0
   Top = 0
   Caption = 'frmPai'
-  ClientHeight = 441
-  ClientWidth = 624
+  ClientHeight = 600
+  ClientWidth = 1068
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,19 +13,21 @@ object frmPai: TfrmPai
   TextHeight = 15
   object pnlBotoes: TPanel
     Left = 0
-    Top = 391
-    Width = 624
+    Top = 550
+    Width = 1068
     Height = 50
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 384
-    object Button1: TButton
+    ExplicitTop = 391
+    ExplicitWidth = 624
+    object btnNovo: TButton
       Left = 16
       Top = 16
       Width = 75
       Height = 25
       Caption = 'Novo'
       TabOrder = 0
+      OnClick = btnNovoClick
     end
     object btnSalvar: TButton
       Left = 136
@@ -34,6 +36,7 @@ object frmPai: TfrmPai
       Height = 25
       Caption = 'Salvar'
       TabOrder = 1
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 256
@@ -50,6 +53,7 @@ object frmPai: TfrmPai
       Height = 25
       Caption = 'Excluir'
       TabOrder = 3
+      OnClick = btnExcluirClick
     end
     object btnFechar: TButton
       Left = 528
@@ -58,6 +62,7 @@ object frmPai: TfrmPai
       Height = 25
       Caption = 'Fechar'
       TabOrder = 4
+      OnClick = btnFecharClick
     end
   end
 end

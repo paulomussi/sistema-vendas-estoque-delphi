@@ -5,7 +5,8 @@ uses
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
   uDataModule in 'uDataModule.pas' {dmConexao: TDataModule},
   uCidades in 'uCidades.pas' {frmCidades},
-  uPai in 'uPai.pas' {frmPai};
+  uPai in 'uPai.pas' {frmPai},
+  uClientes in 'uClientes.pas' {frmClientes};
 
 {$R *.res}
 
@@ -15,6 +16,6 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.CreateForm(TfrmCidades, frmCidades);
-  Application.CreateForm(TfrmPai, frmPai);
+  Application.CreateForm(TfrmClientes, frmClientes);
   Application.Run;
 end.

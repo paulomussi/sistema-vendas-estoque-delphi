@@ -38,4 +38,32 @@ object dmConexao: TdmConexao
     Left = 160
     Top = 120
   end
+  object qryClientes: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT '
+      '   id_cliente,'
+      '    nome,'
+      '    cpf,'
+      '    telefone,'
+      '    email,'
+      '    endereco,'
+      '    bairro,'
+      '    complemento,'
+      '    cep,'
+      '    id_cidade,'
+      '    ativo'
+      'FROM Clientes'
+      'ORDER BY Nome;')
+    Left = 256
+    Top = 40
+  end
+  object dsClientes: TDataSource
+    DataSet = qryClientes
+    Left = 256
+    Top = 120
+  end
 end

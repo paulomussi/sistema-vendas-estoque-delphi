@@ -10,6 +10,8 @@ type
     conexao: TADOConnection;
     qryCidades: TADOQuery;
     dsCidades: TDataSource;
+    qryClientes: TADOQuery;
+    dsClientes: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
