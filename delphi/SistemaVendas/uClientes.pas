@@ -29,6 +29,7 @@ type
     DBCheckBox1: TDBCheckBox;
     Ativo: TLabel;
     procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     { Private declarations }
@@ -47,6 +48,24 @@ implementation
 
 uses uDataModule;
 
+
+procedure TfrmClientes.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  if MessageBox(Application.Handle, 'Você deseja sair do sistema?','Sair',
+    MB_ICONQUESTION + MB_YESNO) = IDYES then
+  begin
+    if dmConexao.qryCidades.Active and dmConexao.qryClientes.Active then
+      dmConexao.qryCidades.Close;
+      dmConexao.qryClientes.Close;
+
+    Action := caFree;
+  end
+  else
+  begin
+    Action := caNone;
+  end;
+end;
 
 procedure TfrmClientes.FormShow(Sender: TObject);
 begin

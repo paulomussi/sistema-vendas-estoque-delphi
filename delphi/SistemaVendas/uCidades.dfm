@@ -3,6 +3,7 @@ inherited frmCidades: TfrmCidades
   Caption = 'Cadastro de Cidades'
   Position = poScreenCenter
   StyleElements = [seFont, seClient, seBorder]
+  OnClose = FormClose
   OnShow = FormShow
   TextHeight = 15
   object Label1: TLabel [0]
@@ -50,8 +51,8 @@ inherited frmCidades: TfrmCidades
   inherited pnlBotoes: TPanel
     TabOrder = 7
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 393
-    ExplicitWidth = 567
+    ExplicitTop = 550
+    ExplicitWidth = 1068
   end
   object dbgCidades: TDBGrid
     Left = 0

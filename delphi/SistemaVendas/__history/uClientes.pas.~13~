@@ -1,0 +1,85 @@
+unit uClientes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uPai, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TfrmClientes = class(TfrmPai)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    CPF: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    dbgClientes: TDBGrid;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBCheckBox1: TDBCheckBox;
+    Ativo: TLabel;
+    procedure FormShow(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    procedure Novo; override;
+    procedure Salvar; override;
+    procedure Excluir; override;
+  end;
+
+var
+  frmClientes: TfrmClientes;
+
+implementation
+
+{$R *.dfm}
+
+uses uDataModule;
+
+
+procedure TfrmClientes.FormShow(Sender: TObject);
+begin
+  inherited;
+  if not dmConexao.qryClientes.Active then
+    dmConexao.qryClientes.Open;
+
+  if not dmConexao.qryCidades.Active then
+    dmConexao.qryCidades.Open;
+    DBEdit1.Clear;
+    DBEdit2.Clear;
+    DBEdit3.Clear;
+    DBEdit4.Clear;
+    DBEdit5.Clear;
+    DBEdit6.Clear;
+    DBEdit7.Clear;
+end;
+
+procedure TfrmClientes.Novo;
+begin
+  dmConexao.qryClientes.Append;
+end;
+
+procedure TfrmClientes.Salvar;
+begin
+  if dmConexao.qryClientes.State in [dsInsert, dsEdit] then
+    dmConexao.qryClientes.Post;
+end;
+
+procedure TfrmClientes.Excluir;
+begin
+  if not dmConexao.qryClientes.IsEmpty then
+    dmConexao.qryClientes.Delete;
+end;
+
+end.

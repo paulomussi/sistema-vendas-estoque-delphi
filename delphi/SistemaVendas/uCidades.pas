@@ -23,6 +23,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -39,6 +40,23 @@ implementation
 {$R *.dfm}
 
 uses uDataModule;
+
+procedure TfrmCidades.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+ if MessageBox(Application.Handle, 'Você deseja sair do sistema?','Sair',
+  MB_ICONQUESTION + MB_YESNO) = IDYES then
+  begin
+    if dmConexao.qryCidades.Active then
+      dmConexao.qryCidades.Close;
+
+    Action := caFree;
+  end
+  else
+  begin
+    Action := caNone;
+  end;
+end;
 
 procedure TfrmCidades.FormShow(Sender: TObject);
 begin

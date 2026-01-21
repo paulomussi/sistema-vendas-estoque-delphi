@@ -3,6 +3,7 @@ inherited frmClientes: TfrmClientes
   Caption = 'frmClientes'
   Position = poScreenCenter
   StyleElements = [seFont, seClient, seBorder]
+  OnClose = FormClose
   OnShow = FormShow
   TextHeight = 15
   object Label1: TLabel [0]
@@ -70,6 +71,8 @@ inherited frmClientes: TfrmClientes
   end
   inherited pnlBotoes: TPanel
     StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 550
+    ExplicitWidth = 1068
   end
   object DBEdit1: TDBEdit
     Left = 106
