@@ -1,0 +1,63 @@
+unit uProdutos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uPai, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmProdutos = class(TfrmPai)
+    DBGrid1: TDBGrid;
+    DBEditDescricao: TDBEdit;
+    DBEditpreco: TDBEdit;
+    DBEditEstoque: TDBEdit;
+    DBEditCodigo: TDBEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure Novo; override;
+    procedure Salvar; override;
+    procedure Excluir; override;
+  end;
+
+var
+  frmProdutos: TfrmProdutos;
+
+implementation
+
+{$R *.dfm}
+
+uses uDataModule;
+
+procedure TfrmProdutos.FormShow(Sender: TObject);
+begin
+  inherited;
+  if not dmConexao.qryProdutos.Active then
+    dmConexao.qryProdutos.Open;
+end;
+
+procedure TfrmProdutos.Novo;
+begin
+  dmConexao.qryProdutos.Append;
+end;
+
+procedure TfrmProdutos.Salvar;
+begin
+  if dmConexao.qryProdutos.State in [dsInsert, dsEdit] then
+    dmConexao.qryProdutos.Post;
+end;
+
+procedure TfrmProdutos.Excluir;
+begin
+  if not dmConexao.qryProdutos.IsEmpty then
+    dmConexao.qryProdutos.Delete;
+end;
+
+end.

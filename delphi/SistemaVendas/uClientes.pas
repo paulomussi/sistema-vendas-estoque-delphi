@@ -28,6 +28,8 @@ type
     DBLookupComboBox1: TDBLookupComboBox;
     DBCheckBox1: TDBCheckBox;
     Ativo: TLabel;
+    DBEdit8: TDBEdit;
+    Label6: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
 

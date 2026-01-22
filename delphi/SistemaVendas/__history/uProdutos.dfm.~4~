@@ -1,0 +1,11 @@
+inherited frmProdutos: TfrmProdutos
+  BorderStyle = bsSingle
+  Caption = 'frmProdutos'
+  Position = poScreenCenter
+  StyleElements = [seFont, seClient, seBorder]
+  OnShow = FormShow
+  TextHeight = 15
+  inherited pnlBotoes: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+end

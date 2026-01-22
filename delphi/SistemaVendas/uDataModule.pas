@@ -12,7 +12,16 @@ type
     dsCidades: TDataSource;
     qryClientes: TADOQuery;
     dsClientes: TDataSource;
+    qryProdutos: TADOQuery;
+    dsProdutos: TDataSource;
+    qryCompras: TADOQuery;
+    dsCompras: TDataSource;
+    qryItensCompra: TADOQuery;
+    dsItensCompra: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
+    procedure qryComprasAfterScroll(DataSet: TDataSet);
+    procedure qryItensCompraBeforePost(DataSet: TDataSet);
+    procedure qryItensCompraBeforeInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -32,6 +41,30 @@ procedure TdmConexao.DataModuleCreate(Sender: TObject);
 begin
   conexao.Connected := True;
   qryCidades.Open;
+end;
+
+procedure TdmConexao.qryComprasAfterScroll(DataSet: TDataSet);
+begin
+  if not qryItensCompra.Active then
+    qryItensCompra.Close;
+
+  qryItensCompra.Parameters.ParamByName('id_compra').Value :=
+    qryCompras.FieldByName('id_compra').AsInteger;
+
+  qryItensCompra.Open;
+end;
+
+procedure TdmConexao.qryItensCompraBeforeInsert(DataSet: TDataSet);
+begin
+  if qryCompras.State in [dsInsert, dsEdit] then
+    raise Exception.Create('Salve a compra antes de inserir itens.');
+end;
+
+procedure TdmConexao.qryItensCompraBeforePost(DataSet: TDataSet);
+begin
+  if qryItensCompra.State = dsInsert then
+    qryItensCompra.FieldByName('id_compra').AsInteger :=
+    qryCompras.FieldByName('id_compra').AsInteger;
 end;
 
 end.

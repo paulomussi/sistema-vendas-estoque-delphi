@@ -1,0 +1,8 @@
+inherited frmPai1: TfrmPai1
+  Caption = 'frmPai1'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnlBotoes: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+end

@@ -1,0 +1,76 @@
+unit uCompras;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uPai, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmCompras = class(TfrmPai)
+    DBGrid1: TDBGrid;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBGrid2: TDBGrid;
+    DBEdit1: TDBEdit;
+    DBEdit4: TDBEdit;
+    Label1: TLabel;
+    Label4: TLabel;
+    DBEdit6: TDBEdit;
+    Label6: TLabel;
+    procedure FormShow(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    procedure Novo; override;
+    procedure Salvar; override;
+    procedure Excluir; override;
+  end;
+
+var
+  frmCompras: TfrmCompras;
+
+implementation
+
+{$R *.dfm}
+
+uses uDataModule;
+
+procedure TfrmCompras.FormShow(Sender: TObject);
+begin
+  inherited;
+if not dmConexao.qryCompras.Active then
+    dmConexao.qryCompras.Open;
+
+    dmConexao.qryItensCompra.Close;
+    dmConexao.qryItensCompra.Parameters.ParamByName('id_compra').Value :=
+    dmConexao.qryCompras.FieldByName('id_compra').AsInteger;
+  dmConexao.qryItensCompra.Open;
+end;
+
+procedure TfrmCompras.Novo;
+begin
+  dmConexao.qryCompras.Append;
+  dmConexao.qryCompras.FieldByName('data_compra').AsDateTime := Date;
+end;
+
+procedure TfrmCompras.Salvar;
+begin
+  if dmConexao.qryCompras.State in [dsInsert, dsEdit] then
+    dmConexao.qryCompras.Post;
+end;
+
+
+procedure TfrmCompras.Excluir;
+begin
+  if not dmConexao.qryCompras.IsEmpty then
+    dmConexao.qryCompras.Delete;
+end;
+
+end.

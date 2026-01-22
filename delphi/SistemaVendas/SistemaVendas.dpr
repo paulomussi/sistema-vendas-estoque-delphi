@@ -6,7 +6,9 @@ uses
   uDataModule in 'uDataModule.pas' {dmConexao: TDataModule},
   uCidades in 'uCidades.pas' {frmCidades},
   uPai in 'uPai.pas' {frmPai},
-  uClientes in 'uClientes.pas' {frmClientes};
+  uClientes in 'uClientes.pas' {frmClientes},
+  uProdutos in 'uProdutos.pas' {frmProdutos},
+  uCompras in 'uCompras.pas' {frmCompras};
 
 {$R *.res}
 
@@ -17,5 +19,7 @@ begin
   Application.CreateForm(TdmConexao, dmConexao);
   Application.CreateForm(TfrmCidades, frmCidades);
   Application.CreateForm(TfrmClientes, frmClientes);
+  Application.CreateForm(TfrmProdutos, frmProdutos);
+  Application.CreateForm(TfrmCompras, frmCompras);
   Application.Run;
 end.

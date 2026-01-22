@@ -1,0 +1,34 @@
+unit uProdutos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uPai, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TfrmProdutos = class(TfrmPai)
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmProdutos: TfrmProdutos;
+
+implementation
+
+{$R *.dfm}
+
+uses uDataModule;
+
+procedure TfrmProdutos.FormShow(Sender: TObject);
+begin
+  inherited;
+  if not dmConexao.qryProdutos.Active then
+    dmConexao.qryProdutos.Open;
+end;
+
+end.

@@ -10,8 +10,12 @@ type
   TfrmPrincipal = class(TForm)
     Button1: TButton;
     Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,7 +29,7 @@ implementation
 
 {$R *.dfm}
 
-uses uCidades, uClientes;
+uses uCidades, uClientes, uProdutos, uDataModule, uCompras;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
@@ -37,6 +41,18 @@ procedure TfrmPrincipal.Button2Click(Sender: TObject);
 begin
 frmClientes := TfrmClientes.Create(Self);
 frmClientes.ShowModal;
+end;
+
+procedure TfrmPrincipal.Button3Click(Sender: TObject);
+begin
+frmProdutos := TfrmProdutos.Create(Self);
+frmProdutos.ShowModal;
+end;
+
+procedure TfrmPrincipal.Button4Click(Sender: TObject);
+begin
+frmCompras := TfrmCompras.Create(Self);
+frmCompras.ShowModal;
 end;
 
 end.

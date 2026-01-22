@@ -14,8 +14,8 @@ object frmPrincipal: TfrmPrincipal
   Position = poScreenCenter
   TextHeight = 15
   object Button1: TButton
-    Left = 224
-    Top = 200
+    Left = 128
+    Top = 168
     Width = 75
     Height = 25
     Caption = 'Cidades'
@@ -23,12 +23,30 @@ object frmPrincipal: TfrmPrincipal
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 216
-    Top = 248
+    Left = 232
+    Top = 168
     Width = 75
     Height = 25
     Caption = 'Clientes'
     TabOrder = 1
     OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 352
+    Top = 168
+    Width = 75
+    Height = 25
+    Caption = 'Produtos'
+    TabOrder = 2
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 128
+    Top = 232
+    Width = 75
+    Height = 25
+    Caption = 'Compras'
+    TabOrder = 3
+    OnClick = Button4Click
   end
 end

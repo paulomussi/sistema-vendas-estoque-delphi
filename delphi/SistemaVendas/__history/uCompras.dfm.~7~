@@ -1,0 +1,118 @@
+inherited frmCompras: TfrmCompras
+  BorderStyle = bsSingle
+  Caption = 'frmCompras'
+  Position = poScreenCenter
+  StyleElements = [seFont, seClient, seBorder]
+  OnShow = FormShow
+  TextHeight = 15
+  object Label2: TLabel [0]
+    Left = 302
+    Top = 395
+    Width = 60
+    Height = 15
+    Caption = 'Fornecedor'
+  end
+  object Label3: TLabel [1]
+    Left = 541
+    Top = 395
+    Width = 84
+    Height = 15
+    Caption = 'Data da compra'
+  end
+  object Label5: TLabel [2]
+    Left = 799
+    Top = 395
+    Width = 54
+    Height = 15
+    Caption = 'Valor Total'
+  end
+  object Label1: TLabel [3]
+    Left = 70
+    Top = 395
+    Width = 62
+    Height = 15
+    Caption = 'Quantidade'
+  end
+  object Label4: TLabel [4]
+    Left = 70
+    Top = 435
+    Width = 71
+    Height = 15
+    Caption = 'Valor Unitario'
+  end
+  inherited pnlBotoes: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 0
+    Width = 1068
+    Height = 185
+    Align = alTop
+    DataSource = dmConexao.dsCompras
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+  end
+  object DBEdit2: TDBEdit
+    Left = 368
+    Top = 392
+    Width = 145
+    Height = 23
+    DataField = 'fornecedor'
+    DataSource = dmConexao.dsCompras
+    TabOrder = 2
+  end
+  object DBEdit3: TDBEdit
+    Left = 647
+    Top = 392
+    Width = 121
+    Height = 23
+    DataField = 'data_compra'
+    DataSource = dmConexao.dsCompras
+    TabOrder = 3
+  end
+  object DBEdit5: TDBEdit
+    Left = 859
+    Top = 392
+    Width = 86
+    Height = 23
+    DataField = 'total'
+    DataSource = dmConexao.dsCompras
+    TabOrder = 4
+  end
+  object DBGrid2: TDBGrid
+    Left = 0
+    Top = 191
+    Width = 1068
+    Height = 170
+    DataSource = dmConexao.dsItensCompra
+    TabOrder = 5
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+  end
+  object DBEdit1: TDBEdit
+    Left = 147
+    Top = 392
+    Width = 121
+    Height = 23
+    DataField = 'quantidade'
+    DataSource = dmConexao.dsItensCompra
+    TabOrder = 6
+  end
+  object DBEdit4: TDBEdit
+    Left = 147
+    Top = 432
+    Width = 121
+    Height = 23
+    DataField = 'valor_unitario'
+    DataSource = dmConexao.dsItensCompra
+    TabOrder = 7
+  end
+end

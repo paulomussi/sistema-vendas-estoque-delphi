@@ -66,4 +66,61 @@ object dmConexao: TdmConexao
     Left = 256
     Top = 120
   end
+  object qryProdutos: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from produtos')
+    Left = 344
+    Top = 40
+  end
+  object dsProdutos: TDataSource
+    DataSet = qryProdutos
+    Left = 344
+    Top = 120
+  end
+  object qryCompras: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    AfterScroll = qryComprasAfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM COMPRAS')
+    Left = 440
+    Top = 40
+  end
+  object dsCompras: TDataSource
+    DataSet = qryCompras
+    Left = 440
+    Top = 120
+  end
+  object qryItensCompra: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    BeforeInsert = qryItensCompraBeforeInsert
+    BeforePost = qryItensCompraBeforePost
+    DataSource = dsCompras
+    Parameters = <
+      item
+        Name = 'id_compra'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Value = 1
+      end>
+    SQL.Strings = (
+      'SELECT * FROM ITENS_COMPRA'
+      'WHERE id_compra = :id_compra')
+    Left = 440
+    Top = 224
+  end
+  object dsItensCompra: TDataSource
+    DataSet = qryItensCompra
+    Left = 440
+    Top = 304
+  end
 end
