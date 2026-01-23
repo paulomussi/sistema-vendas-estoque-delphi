@@ -58,7 +58,9 @@ end;
 
 procedure TdmConexao.qryItensCompraAfterPost(DataSet: TDataSet);
 begin
-  AtualizarEstoqueCompra;
+//AtualizarEstoqueCompra;
+ShowMessage('Estoque atualizado');
+
 end;
 
 procedure TdmConexao.qryItensCompraBeforeInsert(DataSet: TDataSet);

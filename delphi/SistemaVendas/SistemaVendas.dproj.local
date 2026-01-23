@@ -3,26 +3,26 @@
 	<Transactions>
     <Transaction>2026/01/19 14:29:53.000.373,=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2026/01/19 16:52:54.000.060,=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2026/01/19 16:53:02.000.767,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uPrincipal.pas</Transaction>
-    <Transaction>2026/01/19 16:53:02.000.767,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uPrincipal.dfm</Transaction>
-    <Transaction>2026/01/19 16:53:06.000.757,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\SistemaVendas.dproj</Transaction>
+    <Transaction>2026/01/19 16:53:02.000.767,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uPrincipal.pas=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/01/19 16:53:02.000.767,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uPrincipal.dfm=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2026/01/19 16:53:06.000.757,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\SistemaVendas.dproj=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>2026/01/19 16:53:12.000.385,=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2026/01/19 16:53:19.000.193,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uDataModule.dfm</Transaction>
-    <Transaction>2026/01/19 16:53:19.000.193,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uDataModule.pas</Transaction>
+    <Transaction>2026/01/19 16:53:19.000.193,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uDataModule.pas=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/01/19 16:53:19.000.193,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uDataModule.dfm=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2026/01/19 16:53:24.000.286,=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2026/01/19 16:53:28.000.167,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uCidades.dfm</Transaction>
-    <Transaction>2026/01/19 16:53:28.000.167,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uCidades.pas</Transaction>
+    <Transaction>2026/01/19 16:53:28.000.167,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uCidades.pas=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2026/01/19 16:53:28.000.167,C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\uCidades.dfm=C:\Users\Paulo\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
     <Transaction>2026/01/20 13:34:35.000.409,=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
-    <Transaction>2026/01/20 13:35:18.000.699,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uPai.dfm=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.dfm</Transaction>
-    <Transaction>2026/01/20 13:35:18.000.699,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uPai.pas=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
+    <Transaction>2026/01/20 13:35:18.000.699,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uPai.pas</Transaction>
+    <Transaction>2026/01/20 13:35:18.000.699,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.dfm=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uPai.dfm</Transaction>
     <Transaction>2026/01/20 14:17:11.000.614,=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
-    <Transaction>2026/01/20 14:21:21.000.966,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.dfm=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uClientes.dfm</Transaction>
-    <Transaction>2026/01/20 14:21:21.000.966,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uClientes.pas</Transaction>
-    <Transaction>2026/01/22 14:11:00.399,=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
-    <Transaction>2026/01/22 14:13:10.697,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uProdutos.dfm=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.dfm</Transaction>
-    <Transaction>2026/01/22 14:13:10.697,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uProdutos.pas=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
-    <Transaction>2026/01/22 14:54:05.101,=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
-    <Transaction>2026/01/22 14:54:24.226,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uCompras.dfm=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.dfm</Transaction>
-    <Transaction>2026/01/22 14:54:24.226,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uCompras.pas=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
+    <Transaction>2026/01/20 14:21:21.000.966,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uClientes.pas=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
+    <Transaction>2026/01/20 14:21:21.000.966,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uClientes.dfm=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.dfm</Transaction>
+    <Transaction>2026/01/22 14:11:00.000.399,=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
+    <Transaction>2026/01/22 14:13:10.000.697,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uProdutos.pas</Transaction>
+    <Transaction>2026/01/22 14:13:10.000.697,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.dfm=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uProdutos.dfm</Transaction>
+    <Transaction>2026/01/22 14:54:05.000.101,=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas</Transaction>
+    <Transaction>2026/01/22 14:54:24.000.226,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.pas=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uCompras.pas</Transaction>
+    <Transaction>2026/01/22 14:54:24.000.226,E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\Unit1.dfm=E:\github\sistema-vendas-estoque-delphi\delphi\SistemaVendas\uCompras.dfm</Transaction>
   </Transactions>
 </BorlandProject>

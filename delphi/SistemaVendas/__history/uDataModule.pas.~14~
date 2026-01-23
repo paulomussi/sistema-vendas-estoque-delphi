@@ -23,7 +23,7 @@ type
     procedure qryComprasAfterScroll(DataSet: TDataSet);
     procedure qryItensCompraBeforePost(DataSet: TDataSet);
     procedure qryItensCompraBeforeInsert(DataSet: TDataSet);
-    procedure qryItensCompraAfterPost(DataSet: TDataSet);
+    procedure qryAtualizaEstoqueAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -45,6 +45,11 @@ begin
   qryCidades.Open;
 end;
 
+procedure TdmConexao.qryAtualizaEstoqueAfterPost(DataSet: TDataSet);
+begin
+  AtualizarEstoqueCompra;
+end;
+
 procedure TdmConexao.qryComprasAfterScroll(DataSet: TDataSet);
 begin
   if not qryItensCompra.Active then
@@ -54,11 +59,6 @@ begin
     qryCompras.FieldByName('id_compra').AsInteger;
 
   qryItensCompra.Open;
-end;
-
-procedure TdmConexao.qryItensCompraAfterPost(DataSet: TDataSet);
-begin
-  AtualizarEstoqueCompra;
 end;
 
 procedure TdmConexao.qryItensCompraBeforeInsert(DataSet: TDataSet);

@@ -18,16 +18,14 @@ type
     dsCompras: TDataSource;
     qryItensCompra: TADOQuery;
     dsItensCompra: TDataSource;
-    qryAtualizaEstoque: TADOQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure qryComprasAfterScroll(DataSet: TDataSet);
     procedure qryItensCompraBeforePost(DataSet: TDataSet);
     procedure qryItensCompraBeforeInsert(DataSet: TDataSet);
-    procedure qryItensCompraAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
-    procedure AtualizarEstoqueCompra;
+    { Public declarations }
   end;
 
 var
@@ -56,11 +54,6 @@ begin
   qryItensCompra.Open;
 end;
 
-procedure TdmConexao.qryItensCompraAfterPost(DataSet: TDataSet);
-begin
-  AtualizarEstoqueCompra;
-end;
-
 procedure TdmConexao.qryItensCompraBeforeInsert(DataSet: TDataSet);
 begin
   if qryCompras.State in [dsInsert, dsEdit] then
@@ -72,17 +65,6 @@ begin
   if qryItensCompra.State = dsInsert then
     qryItensCompra.FieldByName('id_compra').AsInteger :=
     qryCompras.FieldByName('id_compra').AsInteger;
-end;
-
-procedure TdmConexao.AtualizarEstoqueCompra;
-begin
-  qryAtualizaEstoque.Parameters.ParamByName('quantidade').Value :=
-    qryItensCompra.FieldByName('quantidade').AsInteger;
-
-  qryAtualizaEstoque.Parameters.ParamByName('id_produto').Value :=
-    qryItensCompra.FieldByName('id_produto').AsInteger;
-
-  qryAtualizaEstoque.ExecSQL;
 end;
 
 end.

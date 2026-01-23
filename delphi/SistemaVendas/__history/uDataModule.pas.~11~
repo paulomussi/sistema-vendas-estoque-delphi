@@ -18,8 +18,11 @@ type
     dsCompras: TDataSource;
     qryItensCompra: TADOQuery;
     dsItensCompra: TDataSource;
+    qryAtualizaEstoque: TADOQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure qryComprasAfterScroll(DataSet: TDataSet);
+    procedure qryItensCompraBeforePost(DataSet: TDataSet);
+    procedure qryItensCompraBeforeInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -50,6 +53,30 @@ begin
     qryCompras.FieldByName('id_compra').AsInteger;
 
   qryItensCompra.Open;
+end;
+
+procedure TdmConexao.qryItensCompraBeforeInsert(DataSet: TDataSet);
+begin
+  if qryCompras.State in [dsInsert, dsEdit] then
+    raise Exception.Create('Salve a compra antes de inserir itens.');
+end;
+
+procedure TdmConexao.qryItensCompraBeforePost(DataSet: TDataSet);
+begin
+  if qryItensCompra.State = dsInsert then
+    qryItensCompra.FieldByName('id_compra').AsInteger :=
+    qryCompras.FieldByName('id_compra').AsInteger;
+end;
+
+procedure TdmConexao.AtualizarEstoqueCompra;
+begin
+  qryAtualizaEstoque.Parameters.ParamByName('quantidade').Value :=
+    qryItensCompra.FieldByName('quantidade').AsInteger;
+
+  qryAtualizaEstoque.Parameters.ParamByName('id_produto').Value :=
+    qryItensCompra.FieldByName('id_produto').AsInteger;
+
+  qryAtualizaEstoque.ExecSQL;
 end;
 
 end.

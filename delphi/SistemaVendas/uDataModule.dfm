@@ -1,7 +1,7 @@
 object dmConexao: TdmConexao
   OnCreate = DataModuleCreate
-  Height = 480
-  Width = 640
+  Height = 503
+  Width = 852
   object conexao: TADOConnection
     Connected = True
     ConnectionString = 
@@ -103,6 +103,7 @@ object dmConexao: TdmConexao
     CursorType = ctStatic
     BeforeInsert = qryItensCompraBeforeInsert
     BeforePost = qryItensCompraBeforePost
+    AfterPost = qryItensCompraAfterPost
     DataSource = dsCompras
     Parameters = <
       item
@@ -122,5 +123,25 @@ object dmConexao: TdmConexao
     DataSet = qryItensCompra
     Left = 440
     Top = 304
+  end
+  object qryAtualizaEstoque: TADOQuery
+    Connection = conexao
+    Parameters = <
+      item
+        Name = 'quantidade'
+        DataType = ftInteger
+        Value = Null
+      end
+      item
+        Name = 'id_produto'
+        DataType = ftInteger
+        Value = Null
+      end>
+    SQL.Strings = (
+      'UPDATE PRODUTOS'
+      'SET estoque = estoque + :quantidade'
+      'WHERE id_produto = :id_produto')
+    Left = 552
+    Top = 40
   end
 end

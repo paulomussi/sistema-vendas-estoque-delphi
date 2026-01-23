@@ -23,11 +23,10 @@ type
     procedure qryComprasAfterScroll(DataSet: TDataSet);
     procedure qryItensCompraBeforePost(DataSet: TDataSet);
     procedure qryItensCompraBeforeInsert(DataSet: TDataSet);
-    procedure qryItensCompraAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
-    procedure AtualizarEstoqueCompra;
+    { Public declarations }
   end;
 
 var
@@ -56,11 +55,6 @@ begin
   qryItensCompra.Open;
 end;
 
-procedure TdmConexao.qryItensCompraAfterPost(DataSet: TDataSet);
-begin
-  AtualizarEstoqueCompra;
-end;
-
 procedure TdmConexao.qryItensCompraBeforeInsert(DataSet: TDataSet);
 begin
   if qryCompras.State in [dsInsert, dsEdit] then
@@ -74,7 +68,7 @@ begin
     qryCompras.FieldByName('id_compra').AsInteger;
 end;
 
-procedure TdmConexao.AtualizarEstoqueCompra;
+procedure TdmConexao.qryAtualizaEstoque;
 begin
   qryAtualizaEstoque.Parameters.ParamByName('quantidade').Value :=
     qryItensCompra.FieldByName('quantidade').AsInteger;
