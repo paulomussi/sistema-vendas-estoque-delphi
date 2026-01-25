@@ -102,8 +102,10 @@ object dmConexao: TdmConexao
     Connection = conexao
     CursorType = ctStatic
     BeforeInsert = qryItensCompraBeforeInsert
+    BeforeEdit = qryItensCompraBeforeEdit
     BeforePost = qryItensCompraBeforePost
     AfterPost = qryItensCompraAfterPost
+    BeforeDelete = qryItensCompraBeforeDelete
     DataSource = dsCompras
     Parameters = <
       item
@@ -117,12 +119,12 @@ object dmConexao: TdmConexao
       'SELECT * FROM ITENS_COMPRA'
       'WHERE id_compra = :id_compra')
     Left = 440
-    Top = 224
+    Top = 208
   end
   object dsItensCompra: TDataSource
     DataSet = qryItensCompra
     Left = 440
-    Top = 304
+    Top = 288
   end
   object qryAtualizaEstoque: TADOQuery
     Connection = conexao
@@ -141,7 +143,45 @@ object dmConexao: TdmConexao
       'UPDATE PRODUTOS'
       'SET estoque = estoque + :quantidade'
       'WHERE id_produto = :id_produto')
-    Left = 552
+    Left = 440
+    Top = 376
+  end
+  object qryVendas: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM VENDAS')
+    Left = 568
     Top = 40
+  end
+  object qryItensVendas: TADOQuery
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT *'
+      'FROM ITENS_VENDA'
+      'WHERE id_venda = :id_venda')
+    Left = 576
+    Top = 216
+  end
+  object qryAtualizaEstoqueVenda: TADOQuery
+    Parameters = <>
+    SQL.Strings = (
+      'UPDATE PRODUTOS'
+      'SET estoque = estoque - :quantidade'
+      'WHERE id_produto = :id_produto')
+    Left = 584
+    Top = 384
+  end
+  object dsVendas: TDataSource
+    DataSet = qryVendas
+    Left = 568
+    Top = 128
+  end
+  object dsItensVendas: TDataSource
+    DataSet = qryItensVendas
+    Left = 576
+    Top = 296
   end
 end

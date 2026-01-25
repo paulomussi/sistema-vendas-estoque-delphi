@@ -8,7 +8,8 @@ uses
   uPai in 'uPai.pas' {frmPai},
   uClientes in 'uClientes.pas' {frmClientes},
   uProdutos in 'uProdutos.pas' {frmProdutos},
-  uCompras in 'uCompras.pas' {frmCompras};
+  uCompras in 'uCompras.pas' {frmCompras},
+  uVendas in 'uVendas.pas' {frmVendas};
 
 {$R *.res}
 
@@ -21,5 +22,6 @@ begin
   Application.CreateForm(TfrmClientes, frmClientes);
   Application.CreateForm(TfrmProdutos, frmProdutos);
   Application.CreateForm(TfrmCompras, frmCompras);
+  Application.CreateForm(TfrmVendas, frmVendas);
   Application.Run;
 end.

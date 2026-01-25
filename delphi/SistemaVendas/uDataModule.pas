@@ -19,13 +19,20 @@ type
     qryItensCompra: TADOQuery;
     dsItensCompra: TDataSource;
     qryAtualizaEstoque: TADOQuery;
+    qryVendas: TADOQuery;
+    qryItensVendas: TADOQuery;
+    qryAtualizaEstoqueVenda: TADOQuery;
+    dsVendas: TDataSource;
+    dsItensVendas: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
     procedure qryComprasAfterScroll(DataSet: TDataSet);
     procedure qryItensCompraBeforePost(DataSet: TDataSet);
     procedure qryItensCompraBeforeInsert(DataSet: TDataSet);
     procedure qryItensCompraAfterPost(DataSet: TDataSet);
+    procedure qryItensCompraBeforeDelete(DataSet: TDataSet);
+    procedure qryItensCompraBeforeEdit(DataSet: TDataSet);
   private
-    { Private declarations }
+    FQtdAntiga: Integer;
   public
     procedure AtualizarEstoqueCompra;
   end;
@@ -57,8 +64,38 @@ begin
 end;
 
 procedure TdmConexao.qryItensCompraAfterPost(DataSet: TDataSet);
+var
+  Dif: Integer;
 begin
-  AtualizarEstoqueCompra;
+  Dif := qryItensCompra.FieldByName('quantidade').AsInteger - FQtdAntiga;
+
+  if Dif <> 0 then
+  begin
+    qryAtualizaEstoque.Close;
+    qryAtualizaEstoque.Parameters.ParamByName('id_produto').Value :=
+      qryItensCompra.FieldByName('id_produto').AsInteger;
+
+    qryAtualizaEstoque.Parameters.ParamByName('quantidade').Value := Dif;
+    qryAtualizaEstoque.ExecSQL;
+  end;
+end;
+
+procedure TdmConexao.qryItensCompraBeforeDelete(DataSet: TDataSet);
+begin
+  qryAtualizaEstoque.Close;
+
+  qryAtualizaEstoque.Parameters.ParamByName('id_produto').Value :=
+    qryItensCompra.FieldByName('id_produto').AsInteger;
+
+  qryAtualizaEstoque.Parameters.ParamByName('quantidade').Value :=
+    - qryItensCompra.FieldByName('quantidade').AsInteger;
+
+  qryAtualizaEstoque.ExecSQL;
+end;
+
+procedure TdmConexao.qryItensCompraBeforeEdit(DataSet: TDataSet);
+begin
+  FQtdAntiga := qryItensCompra.FieldByName('quantidade').AsInteger;
 end;
 
 procedure TdmConexao.qryItensCompraBeforeInsert(DataSet: TDataSet);
@@ -73,6 +110,9 @@ begin
     qryItensCompra.FieldByName('id_compra').AsInteger :=
     qryCompras.FieldByName('id_compra').AsInteger;
 end;
+
+
+
 
 procedure TdmConexao.AtualizarEstoqueCompra;
 begin

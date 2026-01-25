@@ -1,0 +1,177 @@
+object dmConexao: TdmConexao
+  OnCreate = DataModuleCreate
+  Height = 503
+  Width = 852
+  object conexao: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
+      'fo=False;User ID=dev;Data Source=localhost\SQLEXPRESS;Use Proced' +
+      'ure for Prepare=1;Auto Translate=True;Packet Size=4096;Workstati' +
+      'on ID=DESKTOP-21291IG;Use Encryption for Data=False;Tag with col' +
+      'umn collation when possible=False'
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    Left = 72
+    Top = 40
+  end
+  object qryCidades: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT'
+      '  id_cidade,'
+      '  nome,'
+      '  estado,'
+      '  cep_inicial,'
+      '  cep_final,'
+      '  ativo'
+      'FROM CIDADES'
+      'ORDER BY nome;')
+    Left = 160
+    Top = 40
+  end
+  object dsCidades: TDataSource
+    DataSet = qryCidades
+    Left = 160
+    Top = 120
+  end
+  object qryClientes: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT '
+      '   id_cliente,'
+      '    nome,'
+      '    cpf,'
+      '    telefone,'
+      '    email,'
+      '    endereco,'
+      '    bairro,'
+      '    complemento,'
+      '    cep,'
+      '    id_cidade,'
+      '    ativo'
+      'FROM Clientes'
+      'ORDER BY Nome;')
+    Left = 256
+    Top = 40
+  end
+  object dsClientes: TDataSource
+    DataSet = qryClientes
+    Left = 256
+    Top = 120
+  end
+  object qryProdutos: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from produtos')
+    Left = 344
+    Top = 40
+  end
+  object dsProdutos: TDataSource
+    DataSet = qryProdutos
+    Left = 344
+    Top = 120
+  end
+  object qryCompras: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    AfterScroll = qryComprasAfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM COMPRAS')
+    Left = 440
+    Top = 40
+  end
+  object dsCompras: TDataSource
+    DataSet = qryCompras
+    Left = 440
+    Top = 120
+  end
+  object qryItensCompra: TADOQuery
+    Active = True
+    Connection = conexao
+    CursorType = ctStatic
+    BeforeInsert = qryItensCompraBeforeInsert
+    BeforeEdit = qryItensCompraBeforeEdit
+    BeforePost = qryItensCompraBeforePost
+    AfterPost = qryItensCompraAfterPost
+    BeforeDelete = qryItensCompraBeforeDelete
+    DataSource = dsCompras
+    Parameters = <
+      item
+        Name = 'id_compra'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Value = 1
+      end>
+    SQL.Strings = (
+      'SELECT * FROM ITENS_COMPRA'
+      'WHERE id_compra = :id_compra')
+    Left = 440
+    Top = 208
+  end
+  object dsItensCompra: TDataSource
+    DataSet = qryItensCompra
+    Left = 440
+    Top = 288
+  end
+  object qryAtualizaEstoque: TADOQuery
+    Connection = conexao
+    Parameters = <
+      item
+        Name = 'quantidade'
+        DataType = ftInteger
+        Value = Null
+      end
+      item
+        Name = 'id_produto'
+        DataType = ftInteger
+        Value = Null
+      end>
+    SQL.Strings = (
+      'UPDATE PRODUTOS'
+      'SET estoque = estoque + :quantidade'
+      'WHERE id_produto = :id_produto')
+    Left = 440
+    Top = 376
+  end
+  object qryVendas: TADOQuery
+    Connection = conexao
+    BeforePost = qryVendasBeforePost
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM VENDAS')
+    Left = 568
+    Top = 40
+  end
+  object qryItensVendas: TADOQuery
+    BeforePost = qryItensVendasBeforePost
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT *'
+      'FROM ITENS_VENDA'
+      'WHERE id_venda = :id_venda')
+    Left = 576
+    Top = 216
+  end
+  object qryAtualizaEstoqueVenda: TADOQuery
+    Parameters = <>
+    SQL.Strings = (
+      'UPDATE PRODUTOS'
+      'SET estoque = estoque - :quantidade'
+      'WHERE id_produto = :id_produto')
+    Left = 576
+    Top = 304
+  end
+end

@@ -49,4 +49,13 @@ object frmPrincipal: TfrmPrincipal
     TabOrder = 3
     OnClick = Button4Click
   end
+  object Button5: TButton
+    Left = 232
+    Top = 232
+    Width = 75
+    Height = 25
+    Caption = 'Vendas'
+    TabOrder = 4
+    OnClick = Button5Click
+  end
 end

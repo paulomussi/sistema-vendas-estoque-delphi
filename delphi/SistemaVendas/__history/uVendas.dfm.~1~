@@ -1,0 +1,10 @@
+inherited frmVendas: TfrmVendas
+  Caption = 'frmVendas'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnlBotoes: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 550
+    ExplicitWidth = 1068
+  end
+end
