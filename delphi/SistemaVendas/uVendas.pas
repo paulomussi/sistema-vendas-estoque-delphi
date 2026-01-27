@@ -18,12 +18,19 @@ type
     dbgItens: TDBGrid;
     Button1: TButton;
     DBLookupComboBox2: TDBLookupComboBox;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Valor: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
     procedure Novo; override;
     procedure Salvar; override;
-    //procedure Excluir; override;
+    procedure Excluir; override;
   end;
 
 var
@@ -37,13 +44,42 @@ uses uDataModule;
 
 
 
+procedure TfrmVendas.Button1Click(Sender: TObject);
+begin
+  inherited;
+  if dmConexao.qryVendas.State in [dsInsert, dsEdit] then
+  begin
+    ShowMessage('Salve a venda antes de inserir itens.');
+    Exit;
+  end;
 
+  dmConexao.qryItensVendas.Append;
+  dmConexao.qryItensVendas.FieldByName('id_venda').AsInteger :=
+    dmConexao.qryVendas.FieldByName('id_venda').AsInteger;
+end;
 
+procedure TfrmVendas.FormShow(Sender: TObject);
+begin
+  inherited;
+  if not dmConexao.qryVendas.Active then
+    dmConexao.qryVendas.Open;
 
+  dmConexao.qryItensVendas.Close;
 
+  if not dmConexao.qryVendas.IsEmpty then
+  begin
+    dmConexao.qryItensVendas.Parameters.ParamByName('id_venda').Value :=
+      dmConexao.qryVendas.FieldByName('id_venda').AsInteger;
+    dmConexao.qryItensVendas.Open;
+  end;
+end;
 
-
-
+procedure TfrmVendas.Excluir;
+begin
+  if not dmConexao.qryItensVendas.IsEmpty then
+  ShowMessage('Exclua os itens antes de excluir a venda.');
+  Exit;
+end;
 
 
 procedure TfrmVendas.Novo;

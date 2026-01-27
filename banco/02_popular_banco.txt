@@ -1,0 +1,64 @@
+INSERT INTO CIDADES (nome, estado, cep_inicial, cep_final)
+VALUES
+('São Paulo', 'SP', '01000-000', '05999-999'),
+('Rio de Janeiro', 'RJ', '20000-000', '23799-999'),
+('Belo Horizonte', 'MG', '30000-000', '31999-999'),
+('Curitiba', 'PR', '80000-000', '82999-999'),
+('Porto Alegre', 'RS', '90000-000', '91999-999');
+
+
+INSERT INTO CLIENTES
+(nome, cpf, telefone, email, endereco, bairro, complemento, cep, id_cidade)
+VALUES
+('João Silva', '123.456.789-00', '(11) 99999-1111', 'joao.silva@email.com',
+ 'Rua das Flores, 123', 'Centro', 'Apto 101', '01001-000', 1),
+
+('Maria Oliveira', '987.654.321-00', '(21) 98888-2222', 'maria.oliveira@email.com',
+ 'Av. Atlântica, 500', 'Copacabana', NULL, '22010-000', 2),
+
+('Carlos Pereira', '456.789.123-00', '(31) 97777-3333', 'carlos.p@email.com',
+ 'Rua Afonso Pena, 800', 'Centro', 'Sala 5', '30130-000', 3),
+
+('Ana Costa', '321.654.987-00', '(41) 96666-4444', 'ana.costa@email.com',
+ 'Rua XV de Novembro, 250', 'Centro', NULL, '80020-000', 4);
+
+
+INSERT INTO PRODUTOS (descricao, preco, estoque)
+VALUES
+('Mouse USB Logitech', 79.90, 50),
+('Teclado Mecânico Redragon', 249.90, 30),
+('Monitor 24" Full HD', 899.90, 15),
+('Notebook i5 8GB RAM', 3499.00, 10),
+('Headset Gamer HyperX', 399.90, 20);
+
+
+INSERT INTO COMPRAS (data_compra, fornecedor, total)
+VALUES
+('2026-01-10', 'Distribuidora Tech Brasil', 5000.00),
+('2026-01-15', 'Importadora Eletrônicos LTDA', 7200.00);
+
+
+INSERT INTO ITENS_COMPRA (id_compra, id_produto, quantidade, valor_unitario)
+VALUES
+(1, 1, 20, 60.00),
+(1, 2, 15, 180.00),
+(2, 3, 10, 700.00),
+(2, 5, 15, 300.00);
+
+
+INSERT INTO VENDAS (data_venda, id_cliente, total)
+VALUES
+('2026-01-20', 1, 1129.80),
+('2026-01-21', 2, 399.90),
+('2026-01-22', 3, 3499.00);
+
+
+INSERT INTO ITENS_VENDA (id_venda, id_produto, quantidade, valor_unitario)
+VALUES
+(1, 1, 1, 79.90),
+(1, 2, 1, 249.90),
+(1, 5, 2, 400.00),
+
+(2, 5, 1, 399.90),
+
+(3, 4, 1, 3499.00);

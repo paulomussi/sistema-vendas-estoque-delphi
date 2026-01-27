@@ -1,6 +1,9 @@
 inherited frmVendas: TfrmVendas
+  BorderStyle = bsSingle
   Caption = 'frmVendas'
+  Position = poScreenCenter
   StyleElements = [seFont, seClient, seBorder]
+  OnShow = FormShow
   TextHeight = 15
   object Cliente: TLabel [0]
     Left = 112
@@ -23,6 +26,27 @@ inherited frmVendas: TfrmVendas
     Height = 15
     Caption = 'Total'
   end
+  object Label1: TLabel [3]
+    Left = 104
+    Top = 371
+    Width = 43
+    Height = 15
+    Caption = 'Produto'
+  end
+  object Label2: TLabel [4]
+    Left = 344
+    Top = 371
+    Width = 62
+    Height = 15
+    Caption = 'Quantidade'
+  end
+  object Valor: TLabel [5]
+    Left = 544
+    Top = 371
+    Width = 26
+    Height = 15
+    Caption = 'Valor'
+  end
   inherited pnlBotoes: TPanel
     StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 550
@@ -35,10 +59,13 @@ inherited frmVendas: TfrmVendas
     Height = 23
     DataField = 'id_cliente'
     DataSource = dmConexao.dsVendas
+    KeyField = 'id_cliente'
+    ListField = 'nome'
+    ListSource = dmConexao.dsClientes
     TabOrder = 1
   end
   object DBEdit1: TDBEdit
-    Left = 392
+    Left = 382
     Top = 56
     Width = 121
     Height = 23
@@ -53,6 +80,7 @@ inherited frmVendas: TfrmVendas
     Height = 23
     DataField = 'total'
     DataSource = dmConexao.dsVendas
+    ReadOnly = True
     TabOrder = 3
   end
   object dbgItens: TDBGrid
@@ -60,7 +88,7 @@ inherited frmVendas: TfrmVendas
     Top = 120
     Width = 1076
     Height = 193
-    DataSource = dmConexao.dsVendas
+    DataSource = dmConexao.dsItensVendas
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -70,20 +98,41 @@ inherited frmVendas: TfrmVendas
   end
   object Button1: TButton
     Left = 808
-    Top = 563
+    Top = 567
     Width = 75
     Height = 25
     Caption = 'Novo Item'
     TabOrder = 5
+    OnClick = Button1Click
   end
   object DBLookupComboBox2: TDBLookupComboBox
-    Left = 155
-    Top = 336
-    Width = 145
+    Left = 153
+    Top = 368
+    Width = 166
     Height = 23
-    KeyField = 'id_cliente'
-    ListField = 'nome'
-    ListSource = dmConexao.dsClientes
+    DataField = 'id_produto'
+    DataSource = dmConexao.dsItensVendas
+    KeyField = 'id_produto'
+    ListField = 'descricao'
+    ListSource = dmConexao.dsProdutos
     TabOrder = 6
+  end
+  object DBEdit3: TDBEdit
+    Left = 412
+    Top = 368
+    Width = 101
+    Height = 23
+    DataField = 'quantidade'
+    DataSource = dmConexao.dsItensVendas
+    TabOrder = 7
+  end
+  object DBEdit4: TDBEdit
+    Left = 584
+    Top = 368
+    Width = 121
+    Height = 23
+    DataField = 'valor_unitario'
+    DataSource = dmConexao.dsItensVendas
+    TabOrder = 8
   end
 end

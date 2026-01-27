@@ -1,6 +1,6 @@
 object dmConexao: TdmConexao
   OnCreate = DataModuleCreate
-  Height = 503
+  Height = 614
   Width = 852
   object conexao: TADOConnection
     Connected = True
@@ -150,6 +150,7 @@ object dmConexao: TdmConexao
     Active = True
     Connection = conexao
     CursorType = ctStatic
+    AfterScroll = qryVendasAfterScroll
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM VENDAS')
@@ -157,15 +158,34 @@ object dmConexao: TdmConexao
     Top = 40
   end
   object qryItensVendas: TADOQuery
-    Parameters = <>
+    Connection = conexao
+    CursorType = ctStatic
+    BeforePost = qryItensVendasBeforePost
+    AfterPost = qryItensVendasAfterPost
+    AfterCancel = qryItensVendasAfterCancel
+    Parameters = <
+      item
+        Name = 'id_venda'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     SQL.Strings = (
-      'SELECT *'
-      'FROM ITENS_VENDA'
+      'SELECT'
+      '  id_item,'
+      '  id_venda,'
+      '  id_produto,'
+      '  quantidade,'
+      '  valor_unitario'
+      'FROM itens_venda'
       'WHERE id_venda = :id_venda')
     Left = 576
     Top = 216
   end
   object qryAtualizaEstoqueVenda: TADOQuery
+    Connection = conexao
     Parameters = <>
     SQL.Strings = (
       'UPDATE PRODUTOS'
@@ -183,5 +203,22 @@ object dmConexao: TdmConexao
     DataSet = qryItensVendas
     Left = 576
     Top = 296
+  end
+  object qryTotalVenda: TADOQuery
+    Connection = conexao
+    Parameters = <
+      item
+        Name = 'id_venda'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+      end>
+    SQL.Strings = (
+      'SELECT SUM(quantidade * valor_unitario) AS total'
+      'FROM itens_venda'
+      'WHERE id_venda = :id_venda')
+    Left = 576
+    Top = 456
   end
 end

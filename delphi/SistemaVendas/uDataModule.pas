@@ -24,6 +24,7 @@ type
     qryAtualizaEstoqueVenda: TADOQuery;
     dsVendas: TDataSource;
     dsItensVendas: TDataSource;
+    qryTotalVenda: TADOQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure qryComprasAfterScroll(DataSet: TDataSet);
     procedure qryItensCompraBeforePost(DataSet: TDataSet);
@@ -31,8 +32,13 @@ type
     procedure qryItensCompraAfterPost(DataSet: TDataSet);
     procedure qryItensCompraBeforeDelete(DataSet: TDataSet);
     procedure qryItensCompraBeforeEdit(DataSet: TDataSet);
+    procedure qryVendasAfterScroll(DataSet: TDataSet);
+    procedure qryItensVendasAfterPost(DataSet: TDataSet);
+    procedure qryItensVendasAfterCancel(DataSet: TDataSet);
+    procedure qryItensVendasBeforePost(DataSet: TDataSet);
   private
     FQtdAntiga: Integer;
+    FAtualizarEstoque: Boolean;
   public
     procedure AtualizarEstoqueCompra;
   end;
@@ -113,6 +119,53 @@ end;
 
 
 
+
+procedure TdmConexao.qryItensVendasAfterCancel(DataSet: TDataSet);
+begin
+  qryItensVendas.Close;
+  qryItensVendas.Open;
+end;
+
+procedure TdmConexao.qryItensVendasAfterPost(DataSet: TDataSet);
+begin
+
+    if not FAtualizarEstoque then
+    Exit;
+
+    qryAtualizaEstoque.Close;
+  qryAtualizaEstoque.Parameters.ParamByName('id_produto').Value :=
+    DataSet.FieldByName('id_produto').AsInteger;
+
+  qryAtualizaEstoque.Parameters.ParamByName('quantidade').Value :=
+    DataSet.FieldByName('quantidade').AsInteger;
+
+
+    qryAtualizaEstoque.ExecSQL;
+
+    qryTotalVenda.Close;
+    qryTotalVenda.Parameters.ParamByName('id_venda').Value :=
+      qryVendas.FieldByName('id_venda').AsInteger;
+    qryTotalVenda.Open;
+
+    qryVendas.Edit;
+    qryVendas.FieldByName('total').AsFloat :=
+      qryTotalVenda.FieldByName('total').AsFloat;
+    qryVendas.Post;
+end;
+
+procedure TdmConexao.qryItensVendasBeforePost(DataSet: TDataSet);
+begin
+  // só permite estoque se for INSERT
+  FAtualizarEstoque := DataSet.State = dsInsert;
+end;
+
+procedure TdmConexao.qryVendasAfterScroll(DataSet: TDataSet);
+begin
+  qryItensVendas.Close;
+  qryItensVendas.Parameters.ParamByName('id_venda').Value :=
+    qryVendas.FieldByName('id_venda').AsInteger;
+  qryItensVendas.Open;
+end;
 
 procedure TdmConexao.AtualizarEstoqueCompra;
 begin
